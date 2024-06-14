@@ -13,9 +13,22 @@ function generateGrid(LastGrid, containerClass){
         square.textContent=i;
         containerClass.appendChild(square);
 
-        // funzione per creazione di bombe
+        // funzione per creazione di bombe  
+        while(BombPositions.length < 16){
+            // creo un math random da 1 a 100
+            let bombPlacing = generateRandomNumber(1,100);
 
-        // aggiungo classe .clicked a ogni 
+            if(!BombPositions.includes(bombPlacing)){
+                // pusho la bomba nell'array bombPositions
+                BombPositions.push(bombPlacing);
+            }
+            
+            console.log(BombPositions);
+            
+        }
+
+
+        // aggiungo classe .clicked a ogni square cliccato
         square.addEventListener('click',
             function(){
                 square.classList.add('clicked')
@@ -25,25 +38,11 @@ function generateGrid(LastGrid, containerClass){
     }
 }
 
+const BombPositions=[]  
+
+
 // funzione per creare le bombe
 
 // creo l'array in cui verranno inserite le bombe
-const BombPositions=[]
 
-// creo un math random da 1 a 100
-
-while(BombPositions.length < 16){
-    // creo un math random da 1 a 100
-    let bombPlacing = generateRandomNumber(1,100);
-
-    if(!BombPositions.includes(bombPlacing)){
-        // pusho la bomba nell'array bombPositions
-        BombPositions.push(bombPlacing);
-    }else{
-        console.log('doppione scartato:', bombPlacing);
-    }
-
-}
-
-console.log(BombPositions);
 
