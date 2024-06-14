@@ -4,27 +4,34 @@ function generateRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// funzione per creare le bombe
+function addBombs(gridSize, bombsNumber){
+    while(BombPositions.length< bombsNumber){
+        // uso generateRandomNumber per creare la posizione delle bombe
+        let bombPlacing= generateRandomNumber(1,gridSize);
+        if(!BombPositions.includes(bombPlacing)){
+        // pusho la bomba nell'array bombPositions
+        BombPositions.push(bombPlacing);
+        }
+    }
+}
+
+
 // funzione per generare caselle al click del bottone+aggiungere classe clicked al bottone cliccato
-function generateGrid(LastGrid, containerClass){
+function generateGrid(gridSize, containerClass){
+
+    addBombs(gridSize, 16);
+    console.log(BombPositions);
+
+
     // creo il ciclo per creare le x caselle all'interno dell'elemento containerClass
-    for(let i = 1; i <= LastGrid; i++){
+    for(let i = 1; i <= gridSize; i++){
         let square= document.createElement('div');
         square.classList.add('square');
-        square.textContent=i;
+        // square.textContent=i;
         containerClass.appendChild(square);
-
-        // funzione per creazione di bombe  
-        while(BombPositions.length < 16){
-            // creo un math random da 1 a 100
-            let bombPlacing = generateRandomNumber(1,100);
-
-            if(!BombPositions.includes(bombPlacing)){
-                // pusho la bomba nell'array bombPositions
-                BombPositions.push(bombPlacing);
-            }
-            
-            console.log(BombPositions);
-            
+        if(BombPositions.includes(i)){
+            square.classList.add('spotted');
         }
 
 
@@ -33,16 +40,18 @@ function generateGrid(LastGrid, containerClass){
             function(){
                 square.classList.add('clicked')
                 console.log(i);
+
+
             }
         )
     }
 }
 
-const BombPositions=[]  
 
 
-// funzione per creare le bombe
 
 // creo l'array in cui verranno inserite le bombe
+
+
 
 

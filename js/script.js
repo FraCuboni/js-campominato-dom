@@ -17,11 +17,14 @@ const boxGame = document.querySelector('.box-game');
 
 let square = 'square';
 
+const BombPositions=[]  
+
 // funzione per creare grid e aggiungere la classe
 smileButton.addEventListener('click',
     function(){
         boxGame.innerHTML='';
         generateGrid(100, boxGame, square)
+        addBombs(100, 16)
     }
 )
 
