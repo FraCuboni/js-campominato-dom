@@ -40,6 +40,21 @@ function generateGrid(gridSize, containerClass){
             function(){
                 square.classList.add('clicked')
                 console.log(i);
+                // faccio in modo tale che gli square con le bombe 'esplodano' al click
+                if(BombPositions.includes(i)){
+                    // creo un array con gli elementi contenenti la classe spotted
+                    let spottedSquares = containerClass.querySelectorAll('.spotted');
+                    // faccio si che tutti gli elementi con la classe spotted prendano classe bomb e clicked
+                    spottedSquares.forEach(square => {
+                        square.classList.remove('spotted');
+                        square.classList.add('clicked');
+                        square.classList.add('bomb');
+                    });
+                    // faccio si che l'elemento cliccato dall'utente abbia classe exploded-bomb
+                    square.classList.add('exploded-bomb');
+
+                    smileButton.classList.add('smile-dead');
+                }
 
 
             }

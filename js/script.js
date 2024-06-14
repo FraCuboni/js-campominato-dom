@@ -22,6 +22,7 @@ const BombPositions=[]
 // funzione per creare grid e aggiungere la classe
 smileButton.addEventListener('click',
     function(){
+        smileButton.classList.remove('smile-dead');
         boxGame.innerHTML='';
         generateGrid(100, boxGame, square)
         addBombs(100, 16)

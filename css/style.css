@@ -67,6 +67,10 @@ body{
     background-image: url(../img/click.png);
 }
 
+.smile-dead{
+    background-image: url(../img/dead.png);
+}
+
 .box-game{
     display: flex;
     flex-wrap: wrap;
@@ -103,4 +107,5 @@ body{
     background-image: url(../img/exploded-bomb.png);
     background-repeat: no-repeat;
     background-position: center;
+    background-color: red;
 }
